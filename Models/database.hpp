@@ -27,7 +27,7 @@ private:
 
 	Database()
 	{
-		m_connection = PQconnectdb("host=localhost dbname=e_prescription_app user=postgres password=");
+		m_connection = PQconnectdb("host=localhost dbname=e_prescription_app user=postgres");
 		
 		if (PQstatus(m_connection) != CONNECTION_OK)
 			throw std::runtime_error(PQerrorMessage(m_connection));

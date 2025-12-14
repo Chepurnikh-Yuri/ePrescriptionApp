@@ -124,10 +124,11 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="patient.cpp" />
-  </ItemGroup>
-  <ItemGroup>
+    <ClInclude Include="database.hpp" />
+    <ClInclude Include="doctor.hpp" />
     <ClInclude Include="patient.hpp" />
+    <ClInclude Include="recipe.hpp" />
+    <ClInclude Include="user.hpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
