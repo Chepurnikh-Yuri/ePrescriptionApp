@@ -1,11 +1,15 @@
 #ifndef WELCOME_PAGE_HPP
 #define WELCOME_PAGE_HPP
 
+#include <Wt/WApplication.h>
 #include <Wt/WContainerWidget.h>
 #include <Wt/WPushButton.h>
 #include <Wt/WText.h>
 #include <Wt/WVBoxLayout.h>
 #include <Wt/WHBoxLayout.h>
+
+#include "login_page.hpp"
+#include "register_page.hpp"
 
 class WelcomePage : public Wt::WContainerWidget
 {
@@ -25,11 +29,23 @@ public:
             Wt::AlignmentFlag::Right
         );
 
+        loginBtn->clicked().connect([=]() {
+            auto root = Wt::WApplication::instance()->root();
+            root->clear(); 
+            root->addWidget(std::make_unique<LoginPage>());
+        });
+
         auto registerBtn = topLayout->addWidget(
             std::make_unique<Wt::WPushButton>("Register"),
             0,
             Wt::AlignmentFlag::Right
         );
+
+        registerBtn->clicked().connect([=]() {
+            auto root = Wt::WApplication::instance()->root();
+            root->clear();
+            root->addWidget(std::make_unique<RegisterPage>());
+        });
 
         topLayout->addStretch(1);
 
@@ -39,7 +55,7 @@ public:
         center->addStyleClass("welcome-center");
 
         auto text = center->addWidget(
-            std::make_unique<Wt::WText>("WELCOME TO MY WEBSITE")
+            std::make_unique<Wt::WText>("HELLO & WELCOME")
         );
         text->addStyleClass("welcome-text");
 
